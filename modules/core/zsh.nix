@@ -10,8 +10,19 @@
   home-manager.users.gurki = {
     programs.zsh.oh-my-zsh = {
       enable = true;
-      plugins = ["sudo" "git"];
+    plugins = with pkgs; [
+      "sudo"
+      "git"
+      (zshPlugin zsh-syntax-highlighting)
+      (zshPlugin zsh-history-substring-search)
+    ];
       theme = "af-magic";
+
+      shellAliases = with pkgs; {
+        cat = "${pkgs.bat.outPath}/bin/bat";
+        diff = "diff --color=auto";
+        rebuild = "sudo nixos-rebuild switch";
+      };
     };
   };
 
