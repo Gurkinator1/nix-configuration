@@ -6,4 +6,13 @@
   # Configure zsh as the global shell for all users since there's
   # not really a point in using other shells alongside it anyway.
   users.defaultUserShell = pkgs.zsh;
+
+  home-manager.users.gurki = {
+    programs.zsh.oh-my-zsh = {
+      enable = true;
+      plugins = ["sudo" "git"];
+      theme = "af-magic";
+    };
+  };
+
 }

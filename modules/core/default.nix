@@ -8,6 +8,17 @@
       ./networking.nix
     ];
 
+    users.users.gurki.packages = with pkgs; [
+      firefox
+      libreoffice-fresh
+      thunderbird
+      obsidian
+      gimp
+      zip
+      unzip
+      drawio
+    ];
+
     environment = {
       pathsToLink = ["/share/zsh"];
       systemPackages = with pkgs; [

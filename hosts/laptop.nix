@@ -7,32 +7,27 @@
 
   system.stateVersion = "23.11";
   home-manager.users.gurki.home.stateVersion = "23.11";
+  
   # user configuration
+  networking.hostName = "gurki-laptop";
   users.users.gurki = {
     isNormalUser = true;
     extraGroups = [ "networkmanager" "wheel" "plugdev" ];
     packages = with pkgs; [
-      firefox
       discord
-      thunderbird
       vscode
-      libreoffice-fresh
       tailscale
       jetbrains.idea-community
       rnote
-      drawio
       python3
-      zip
-      unzip
       element-desktop
       geogebra
       temurin-jre-bin-17
       prismlauncher
-      obsidian
-      gimp
       krita
     ];
   };
+
   ## tailscale
   services.tailscale.enable = true;
   services.tailscale.useRoutingFeatures = "client";
@@ -42,13 +37,6 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   
-  networking.hostName = "gurki-laptop"; # Define your hostname.
-  ## networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-
-  ## Enable networking
-  networking.networkmanager.enable = true;
-  systemd.services.NetworkManager-wait-online.enable = false; 
-
   ## Enable the X11 windowing system.
   services.xserver.enable = true;
 
@@ -58,11 +46,6 @@
 
   ## Enable CUPS to print documents.
   services.printing.enable = true;
-
-  #enable flakes
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
-  # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
 
   # hardware configuration
   boot.initrd.availableKernelModules = [ "xhci_pci" "thunderbolt" "nvme" "usb_storage" "sd_mod" ];

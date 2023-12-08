@@ -14,7 +14,8 @@
   let
     inherit (nixpkgs) lib;
 
-    home = [
+    # common module for all hosts
+    common = [
       home-manager.nixosModules.home-manager
       {
         home-manager = {
@@ -22,6 +23,13 @@
           useUserPackages = true;
           #users.gurki = lib.mkMerge [./dotfiles];
         };
+      }
+
+      {
+        #enable flakes
+        nix.settings.experimental-features = [ "nix-command" "flakes" ];
+        # Allow unfree packages
+        nixpkgs.config.allowUnfree = true;
       }
     ];
 
@@ -31,7 +39,7 @@
     nixosConfigurations = {
       gurki-laptop = nixpkgs.lib.nixosSystem {
         system = system;
-        modules = [./hosts/laptop.nix] ++ home;
+        modules = [./hosts/laptop.nix] ++ common;
         specialArgs = {
           inherit inputs;
           inherit home-manager;
