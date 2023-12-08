@@ -3,6 +3,7 @@
   imports = [
     (modulesPath + "/installer/scan/not-detected.nix")
     ../modules/core
+    ../modules/other/rtlsdr.nix
   ];
 
   system.stateVersion = "23.11";
@@ -12,10 +13,8 @@
   networking.hostName = "gurki-laptop";
   users.users.gurki = {
     isNormalUser = true;
-    extraGroups = [ "networkmanager" "wheel" "plugdev" ];
+    extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
-      discord
-      vscode
       tailscale
       jetbrains.idea-community
       rnote

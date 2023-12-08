@@ -17,6 +17,8 @@
       zip
       unzip
       drawio
+      discord
+      vscode
     ];
 
     environment = {

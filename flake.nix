@@ -45,6 +45,15 @@
           inherit home-manager;
         };
       };
+
+      gurki-desktop = nixpkgs.lib.nixosSystem {
+        system = system;
+        modules = [./hosts/desktop.nix] ++ common;
+        specialArgs = {
+          inherit inputs;
+          inherit home-manager;
+        };
+      };
     };
   };
 }
