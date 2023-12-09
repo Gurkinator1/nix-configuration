@@ -37,10 +37,7 @@
       excludePackages = [ pkgs.xterm ];
       videoDrivers = [ "amdgpu" ];
       libinput.enable = true;
-      displayManager.gdm = {
-        enable = true;
-        wayland = true;
-      };
+      displayManager.sddm = { enable = true; };
     };
     dbus.enable = true;
     tumbler.enable = true;
