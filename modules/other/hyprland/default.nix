@@ -1,4 +1,5 @@
 { pkgs, ... }: {
+  programs.hyprland.enable = true;
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
   home-manager.users.gurki.wayland.windowManager.hyprland = {
     enable = true;
