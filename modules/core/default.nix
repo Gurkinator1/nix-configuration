@@ -1,5 +1,13 @@
 { pkgs, lib, ... }: {
-  imports = [ ./nvim ./fonts.nix ./locale.nix ./zsh.nix ./networking.nix ];
+  imports = [
+    ./nvim
+    ./fonts.nix
+    ./locale.nix
+    ./zsh.nix
+    ./git.nix
+    ./sound.nix
+    ./networking.nix
+  ];
 
   programs.direnv.enable = true;
 
@@ -18,6 +26,6 @@
 
   environment = {
     pathsToLink = [ "/share/zsh" ];
-    systemPackages = with pkgs; [ libusb qrencode home-manager ];
+    systemPackages = with pkgs; [ libusb qrencode home-manager os-prober ];
   };
 }

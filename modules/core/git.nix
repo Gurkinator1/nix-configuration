@@ -1,8 +1,1 @@
-{ pkgs, ... }: {
-    users.users.gurki = {
-        packages = with pkgs; [
-            git
-            gh
-        ];
-    }
-}
+{ pkgs, ... }: { users.users.gurki = { packages = with pkgs; [ git gh ]; }; }
