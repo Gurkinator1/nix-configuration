@@ -25,19 +25,30 @@
     ];
   };
 
-  programs.dconf.enable = true;
-
   # system configuration
   security.polkit.enable = true;
 
-  # TODO monitor setup
-  # dual boot
-  #boot.loader.grub = {
-  #  enable = true;
-  #  device = "nodev";
-  #  useOSProber = true;
-  #};
+  programs.dconf.enable = true;
+  services = {
+    xserver = {
+      enable = true;
+      layout = "de";
+      xkbVariant = "";
+      excludePackages = [ pkgs.xterm ];
+      videoDrivers = [ "amdgpu" ];
+      libinput.enable = true;
+      displayManager.gdm = {
+        enable = true;
+        wayland = true;
+      };
+    };
+    dbus.enable = true;
+    tumbler.enable = true;
+  };
 
+  # TODO monitor setup
+
+  # bootloader
   boot.loader.efi.efiSysMountPoint = "/boot";
 
   boot.loader.grub.enable = true;
@@ -58,20 +69,18 @@
   boot.kernelModules = [ "kvm-amd" ];
   boot.extraModulePackages = [ ];
 
-  fileSystems."/" =
-    { device = "/dev/disk/by-uuid/796c729b-3af7-4ed1-8c4a-ef5f008bd119";
-      fsType = "ext4";
-    };
+  fileSystems."/" = {
+    device = "/dev/disk/by-uuid/796c729b-3af7-4ed1-8c4a-ef5f008bd119";
+    fsType = "ext4";
+  };
 
-  fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/2A56-2FBC";
-      fsType = "vfat";
-    };
+  fileSystems."/boot" = {
+    device = "/dev/disk/by-uuid/2A56-2FBC";
+    fsType = "vfat";
+  };
 
   swapDevices =
-    [ { device = "/dev/disk/by-uuid/6b03a0f8-3c03-4cca-9cbf-115b0bf64c78"; }
-    ];
-
+    [{ device = "/dev/disk/by-uuid/6b03a0f8-3c03-4cca-9cbf-115b0bf64c78"; }];
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
   # (the default) this is the recommended approach. When using systemd-networkd it's
