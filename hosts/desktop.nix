@@ -25,16 +25,26 @@
     ];
   };
 
+  programs.dconf.enable = true;
+
   # system configuration
   security.polkit.enable = true;
 
   # TODO monitor setup
   # dual boot
-  boot.loader.grub = {
-    enable = true;
-    device = "nodev";
-    useOSProber = true;
-  };
+  #boot.loader.grub = {
+  #  enable = true;
+  #  device = "nodev";
+  #  useOSProber = true;
+  #};
+
+  boot.loader.efi.efiSysMountPoint = "/boot";
+
+  boot.loader.grub.enable = true;
+  boot.loader.grub.devices = [ "nodev" ];
+  boot.loader.grub.efiInstallAsRemovable = true;
+  boot.loader.grub.efiSupport = true;
+  boot.loader.grub.useOSProber = true;
 
   hardware.opengl.driSupport32Bit = true;
   hardware.opengl.extraPackages = with pkgs; [ amdvlk ];
