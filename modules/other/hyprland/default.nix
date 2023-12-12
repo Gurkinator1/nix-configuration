@@ -8,5 +8,5 @@
 
   };
 
-  users.users.gurki.packages = with pkgs; [ hyprland wofi dolphin kitty ];
+  users.users.gurki.packages = with pkgs; [ hyprland wofi dolphin kitty xwaylandvideobridge ];
 }
