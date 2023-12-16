@@ -8,5 +8,15 @@
 
   };
 
-  users.users.gurki.packages = with pkgs; [ hyprland wofi dolphin kitty xwaylandvideobridge ];
+  users.users.gurki.packages = with pkgs; [
+    hyprland
+    wofi
+    dolphin
+    kitty
+    xwaylandvideobridge
+    grim
+    slurp
+    wl-clipboard
+    hyprpaper
+  ];
 }

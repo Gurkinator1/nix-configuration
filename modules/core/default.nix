@@ -22,6 +22,9 @@
     drawio
     discord
     vscode
+    htop
+    neofetch
+    killall
   ];
 
   environment = {
