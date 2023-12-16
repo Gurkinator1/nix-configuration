@@ -28,6 +28,11 @@
   # system configuration
   security.polkit.enable = true;
 
+  # HIP libraries
+  systemd.tmpfiles.rules = [
+    "L+    /opt/rocm/hip   -    -    -     -    ${pkgs.rocmPackages.clr}"
+  ];
+
   programs.dconf.enable = true;
   services = {
     xserver = {
